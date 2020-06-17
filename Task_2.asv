@@ -1,0 +1,45 @@
+% Task 2: 1D Random Walk with two people
+
+clear all;
+close all;
+
+number_of_steps = 1000;
+number_of_simulations = 100;
+
+p_right = 0.5;
+p_static = 0;
+p_left = 1 - p_right - p_static;
+
+positionA = 0;
+positionB = 0;
+
+pickA = 0;
+pickB = 0;
+
+
+
+for a = 1:100
+    
+    meeting_points = zeros(1, number_of_simulations);
+    positionB = a; % Trying out different distances between person A and B
+    
+    for x = 1:number_of_simulations
+
+        for i = 1:number_of_steps
+
+            pickA = randsrc(1,1,[1,0,-1;p_right,p_static,p_left]);
+            pickB = randsrc(1,1,[1,0,-1;p_right,p_static,p_left]);
+
+            positionA = positionA + pickA;
+
+            positionB = positionB + pickB;
+
+            if (positionA == positionB)
+                meeting_points(x) = i;
+            end
+
+        end
+    end
+    
+end
+
