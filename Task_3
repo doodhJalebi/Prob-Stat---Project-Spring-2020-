@@ -3,7 +3,7 @@ clc;
 close all;
 clear;
 
-stepsPerWalk = 100;
+stepsPerWalk = 1000;
 numberOfWalks = 100;
 x_t(1) = 0;
 y_t(1) = 0;
@@ -22,24 +22,12 @@ hold on;
 % Random walk
 for m = 1 : numberOfWalks
 	for n = 1 : stepsPerWalk
-%         angleArray = [0,(pi/2),pi,(3*pi/2),(720/pi),(900/pi),(1080/pi)];
-        angleArray = [0,90,180,270];
-        angle = angleArray(randi(length(angleArray)));
+        angleArray = [0, 90,180,270];
+        angle = degtorad(angleArray(randi(length(angleArray))));
         stepSizeArray = [0,0.5,1];
         stepSize = stepSizeArray(randi(length(stepSizeArray)));
-		if angle < 90
-			x_t(n+1) = x_t(n) + stepSize*sin(angle);
-			y_t(n+1) = y_t(n) + stepSize*cos(angle);
-        elseif angle >=90 && angle < 180
-			x_t(n+1) = x_t(n) + stepSize*cos(angle-90);
-			y_t(n+1) = y_t(n) - stepSize*sin(angle-90);
-        elseif angle >=180 && angle < 270
-			x_t(n+1) = x_t(n) - stepSize*cos(angle-180);
-			y_t(n+1) = y_t(n) - stepSize*sin(angle-180);
-        elseif angle >=270 && angle < 360
-			x_t(n+1) = x_t(n) - stepSize*cos(angle-270);
-			y_t(n+1) = y_t(n) + stepSize*sin(angle-270);
-        end
+        x_t(n+1) = x_t(n) + stepSize*sin(angle);
+        y_t(n+1) = y_t(n) + stepSize*cos(angle);
 	end
 	plot(x_t, y_t, 'LineWidth', 2);
 	hold on
