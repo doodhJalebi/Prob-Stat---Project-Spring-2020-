@@ -22,7 +22,7 @@ hold on;
 % Random walk
 for m = 1 : numberOfWalks
 	for n = 1 : stepsPerWalk
-        angle = 360*rand(1);
+        angle = degtorad(360*rand(1));
         stepSize = 1*rand(1);
         x_t(n+1) = x_t(n) + stepSize*sin(angle);
         y_t(n+1) = y_t(n) + stepSize*cos(angle);
