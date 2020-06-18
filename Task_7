@@ -1,0 +1,35 @@
+% Random walk inside circle using continuous and discrete random variables
+clc;
+close all;
+clear;
+
+stepsPerWalk = 1000;
+numberOfWalks = 100;
+x_t(1) = 0;
+y_t(1) = 0;
+
+% Plotting a circle
+startingXpos = 0;
+startingYpos = 0;
+radius = 100;
+diameter = radius*2;
+px = startingXpos - radius;
+py = startingYpos - radius;
+rectangle('Position',[px, py, diameter, diameter],'Curvature',[1 1])
+axis square;
+hold on;
+
+% Random walk
+for m = 1 : numberOfWalks
+	for n = 1 : stepsPerWalk
+        angle = 360*rand(1);
+        stepSizeArray = [0,0.5,1];
+        stepSize = stepSizeArray(randi(length(stepSizeArray)));
+        x_t(n+1) = x_t(n) + stepSize*sin(angle);
+        y_t(n+1) = y_t(n) + stepSize*cos(angle);
+	end
+	plot(x_t, y_t, 'LineWidth', 2);
+	hold on
+	drawnow;
+end
+grid on;
