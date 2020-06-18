@@ -22,7 +22,9 @@ hold on;
 % Random walk
 for m = 1 : numberOfWalks
 	for n = 1 : stepsPerWalk
-        angle = 360*rand(1);
+%         angleArray = [0,(pi/2),pi,(3*pi/2),(720/pi),(900/pi),(1080/pi)];
+        angleArray = [0,90,180,270];
+        angle = angleArray(randi(length(angleArray)));
         stepSizeArray = [0,0.5,1];
         stepSize = stepSizeArray(randi(length(stepSizeArray)));
 		if angle < 90
@@ -37,8 +39,7 @@ for m = 1 : numberOfWalks
         elseif angle >=270 && angle < 360
 			x_t(n+1) = x_t(n) - stepSize*cos(angle-270);
 			y_t(n+1) = y_t(n) + stepSize*sin(angle-270);
-		end
-		distance = sqrt(x_t(n+1)^2 + y_t(n+1)^2);
+        end
 	end
 	plot(x_t, y_t, 'LineWidth', 2);
 	hold on
