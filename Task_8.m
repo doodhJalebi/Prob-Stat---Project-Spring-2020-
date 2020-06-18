@@ -4,7 +4,7 @@ close all;
 clear;
 
 stepsPerWalk = [];
-numberOfWalks = 100;
+numberOfWalks = 1;
 
 % Plotting a circle
 startingXpos = 0;

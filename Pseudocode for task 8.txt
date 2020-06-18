@@ -1,0 +1,12 @@
+for i = 1:100 #number of random points
+
+	positionA = new random()
+	positionB = new random()
+
+	for j = 1:100 #number of simulations
+		while distance >= 1 #number of steps
+			[movement code]
+		n_steps(j) = step_count
+	
+	averages(i) = mean(n_steps)
+	starting_distance(i) = abs(positionA - positionB)
