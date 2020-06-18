@@ -4,13 +4,15 @@ clear all;
 close all;
 
 number_of_steps = 1000;
+number_of_simulations = 100;
+
 p_right = 0.5;
 p_static = 0.0;
 p_left = 0.5;
 
-distances = zeros(1000, 1000);
+distances = zeros(number_of_simulations, number_of_steps);
 
-for x = 1:1000
+for x = 1:number_of_simulations
     position = 0;
 
     %zero_line(1:number_of_steps) = position;
@@ -44,9 +46,9 @@ for x = 1:1000
     distances(x,:) = moves;
 end
 %plot(1:100, distances);
-averages = zeros(1, 1000);
+averages = zeros(1, number_of_steps);
 
-for i = 1:1000
+for i = 1:number_of_steps
    averages(i) = mean(distances(:,i));
 end
 
