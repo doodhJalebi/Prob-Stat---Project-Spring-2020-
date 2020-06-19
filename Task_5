@@ -1,9 +1,10 @@
 % Random walk inside circle using continuous random variables
+
 clc;
 close all;
 clear;
 
-stepsPerWalk = 1000;
+stepsPerWalk = 10000;
 numberOfWalks = 100;
 x_t(1) = 0;
 y_t(1) = 0;
@@ -24,8 +25,14 @@ for m = 1 : numberOfWalks
 	for n = 1 : stepsPerWalk
         angle = degtorad(360*rand(1));
         stepSize = 1*rand(1);
-        x_t(n+1) = x_t(n) + stepSize*sin(angle);
-        y_t(n+1) = y_t(n) + stepSize*cos(angle);
+        dist_rad = sqrt((x_t(n) + stepSize*sin(angle))^2+(y_t(n) + stepSize*cos(angle))^2);
+        if dist_rad<100
+            x_t(n+1) = x_t(n) + stepSize*sin(angle);
+            y_t(n+1) = y_t(n) + stepSize*cos(angle);
+        else
+            x_t(n+1)=x_t(n);
+            y_t(n+1)=y_t(n);
+        end
 	end
 	plot(x_t, y_t, 'LineWidth', 2);
 	hold on
