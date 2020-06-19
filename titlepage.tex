@@ -46,6 +46,8 @@ $d$ is the distance between them at time $t = 0$.
 The simulation was run first for a single random walk and then for 100 random walks in order to observe the differences and randomness in the walks. The simulation with the nodes having an equal probability to move in discrete values for angles and step size. No pattern could be observed from this. However, when running the simulation with unequal probabilities for angles and step size, a pattern could be found in which all random walks were simulated close to each other, at the angle having the highest probability.
 
 \subsection*{Re-entry Model:}
+The Re-entry model works by detecting on every step if the next step taken would cross the boundary, if so the particle stays where it is for the step, however it is allow to move in the next step if it isn't crossing the boundary. In order to achieve this we added a check for euclidean distance from the origin and compared with the radius every time a step is taken and work along that. This Re-entry model ensures that the particle does not escape the circle and that it can still move by changing its direction in the upcoming steps.\\
+Our choice using such a model was such that we can ensure every step taken is allowed and random.
 
 
 \section*{Task 4}
@@ -70,6 +72,13 @@ Simulations for Task 5 were conducted in a similar manner to that of Task 3. Ins
 \section*{Task 7}
 \subsection*{Simulation Model:}
 Simulations for Task 7 were conducted in a similar manner to that of Task 3. Instead of using discrete values of angles and step size, continuous values were chosen for the angles and discrete values for the step size. When taking a closer look at the simulation results (zooming in), the angles of each step differed from each other but there were similarity in the step sizes since discrete values were used.
+
+
+
+\section*{Task 8}
+\subsection*{Simulation Model:}
+In order to make this simulation we ran a simulation similar to Task 5, but now we added two particles to the same space and let them wander through defined protocols until they came closer than $1$ unit between one another. The initial positions were calculated by choosing a distance $r$ and an angle $\theta$ from a uniform continuous sample space of $0-R$, where $R$ is radius and $0-2\pi$ for angle.\\
+This simulation was then run for 10 different positions of particles each run for 10 times to get a mean value of steps for each of these positions, then our data was plotted as mean number of steps against the Euclidean distance between particles' initial position. This data is represented in figure %pls add number here.
 
 
 \end{document}
