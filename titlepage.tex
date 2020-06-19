@@ -1,0 +1,57 @@
+\documentclass[10pt, a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\begin{document}
+    
+\title{MATH 310: Probability \& Statistics \\Project Report}
+\author{Owais Bin Asad, Aaron Lucas Soares, Bahzad Ahmad}
+
+\maketitle
+\newpage
+
+\section*{Task 1}
+\subsection*{Simulation Model:}
+In order to determine a good average distance from starting position for each step number, the simulation was run
+100 times, each one being 1000 steps long. Refer to figure 1.
+
+\subsection*{Mathematical Model:}
+\begin{align*}
+    y_{t+1} \approx y_{t} + X
+\end{align*}
+
+where X is a discrete random variable that takes on discrete values $[-1, 1]$ with probabilites $[0.5, 0.5]$ respectively.
+$y_t$ is the distance from the starting point at time $t$. $y_{t+1}$ is the distance from the starting point at time $t+1$.
+
+
+\section*{Task 2}
+\subsection*{Simulation Model:}
+In order to determine a good average number of steps for a fixed starting distance between the two persons, the simulation was run
+100 times, each one being 1000 steps long, for each value of starting distance $x$. Refer to figure 2.
+
+\subsection*{Mathematical Model:}
+\begin{align*}
+    E[T] = \frac{1}{2}(\text{time for person A to reach }\frac{d}{2})\text{ for even d}\\
+    E[T] = \frac{1}{2}(\text{time for person A to reach }\frac{d+1}{2})\text{ for odd d}\\
+\end{align*}
+
+where T is a random variable that denotes the time taken in number of steps for person A and B to meet.
+$d$ is the distance between them at time $t = 0$.
+
+
+\section*{Task 4}
+\subsection*{Simulation Model:}
+This builds on Task 1's simulation model with the only difference being that the step size is modeled by a uniform random variable now.
+Refer to figure 4.
+
+\subsection*{Mathematical Model:}
+\begin{align*}
+    y_{t+1} \approx y_{t} + X
+\end{align*}
+
+where X is a continuous random variable that takes on values $[0, 1]$ with unifrom probabilites.
+$y_t$ is the distance from the starting point at time $t$. $y_{t+1}$ is the distance from the starting point at time $t+1$.
+
+
+\end{document}
