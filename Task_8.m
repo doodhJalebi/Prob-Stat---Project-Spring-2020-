@@ -31,7 +31,9 @@ for j= 1 : 10 %change to number of different positions u want
         fprintf('Simulation %d/%d\n', m, numberOfWalks);
         n= 1;
         while sqrt((x_t_1(n)-x_t_2(n))^2+(y_t_1(n)-y_t_2(n))^2)>=1
-            
+            if mod(n, 10000) == 0
+                fprintf('Step count = %d\n', n);
+            end
             ang1 = degtorad(360*rand(1));
             stepSize1 = 1*rand(1);
             dist_rad_1=sqrt((x_t_1(n) + stepSize1*sin(ang1))^2+(y_t_1(n) + stepSize1*cos(ang1))^2);
@@ -67,14 +69,14 @@ for j= 1 : 10 %change to number of different positions u want
         
     end
     
-    meansteps(j)=mean(stepsPerWalk);
+    meansteps(j) = mean(stepsPerWalk);
     
 end
 
-hold on
-drawnow;
-grid on
-rectangle('Position',[px, py, diameter, diameter],'Curvature',[1 1])
-axis square;
-hold on;
+
+% Sorting meansteps so that they are in accordance with an ascending
+% starting distance. Otherwise, the plot moves backwards as well.
+[starting_distance, sortIdx] = sort(starting_distance, 'ascend');
+meansteps = meansteps(:, sortIdx);
+
 plot(starting_distance,meansteps);
